@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mojorag:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mojorag:latest
+    container_name: mojorag
+    platform: linux/amd64
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./index:/app/index
+      - ./tests:/app/tests
+      - ./src:/app/src
+      - ./prompts:/app/prompts
+    environment:
+      - MOJORAG_PROFILE=balanced
+      - MOJORAG_DATA_DIR=/app/data
+      - MOJORAG_MODELS_DIR=/app/models
+      - MOJORAG_INDEX_DIR=/app/index
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "python3 -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\" || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s

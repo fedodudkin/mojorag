@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mojorag"
+version = "0.1.0"
+description = "High-performance local RAG system"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+    "sentence-transformers>=5.0,<6.0",
+    "optimum[onnxruntime]",
+    "onnxruntime",
+    "click",
+    "rich",
+    "jinja2",
+    "mistune",
+    "psutil",
+    "huggingface-hub",
+]
+
+[project.optional-dependencies]
+server = ["fastapi", "uvicorn[standard]"]
+dev = ["pytest", "pytest-benchmark", "ruff"]
+
+[project.scripts]
+mojorag = "src.python.main:cli"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+markers = [
+    "slow: медленные тесты (производительность, полный цикл)",
+    "integration: интеграционные тесты с реальными данными",
+]

@@ -1,0 +1,18 @@
+# Только самые проблемные — с верхней границей
+sentence-transformers>=5.0,<6.0
+# llama-cpp-python убран — ставится отдельно через wheel
+
+# Всё остальное — без версий
+click
+rich
+jinja2
+mistune
+psutil
+huggingface-hub
+fastapi
+uvicorn[standard]
+pytest
+pytest-benchmark
+ruff
+optimum[onnxruntime]
+onnxruntime
