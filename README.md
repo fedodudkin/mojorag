@@ -37,10 +37,11 @@ make build
 ### 2. Download models
 
 ```bash
-python scripts/download_models.py --profile balanced
+python scripts/download_models.py
 ```
 
-Available profiles: `low_memory`, `balanced`, `performance`, `all`.
+This downloads Phi-3-mini Q4 (~2.5 GB) for the balanced profile.
+For the performance/low_performance profile, download other models manually. 
 
 ### 3. Start the server
 
