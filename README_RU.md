@@ -37,10 +37,11 @@ make build
 ### 2. Загрузка моделей
 
 ```bash
-python scripts/download_models.py --profile balanced
+python scripts/download_models.py
 ```
 
-Доступные профили: `low_memory`, `balanced`, `performance`, `all`.
+По умолчанию загружает модель для профиля balanced (Phi-3-mini-4k-instruct-q4, ~2.5 GB).
+Для профилей performance/low_performance скачайте необходимые модели вручную.
 
 ### 3. Запуск сервера
 
